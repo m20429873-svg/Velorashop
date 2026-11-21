@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090711">
+<title>VELORA | Official Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #090711;
+  color: white;
+  font-family: 'Cairo', sans-serif;
+}
+
+header {
+  padding: 20px;
+  background: #100d1c;
+  border-bottom: 1px solid #38265c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  color: #ae8cff;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+nav a {
+  color: #c7bddb;
+  text-decoration: none;
+  margin: 0 7px;
+  font-size: 13px;
+}
+
+.hero {
+  text-align: center;
+  padding: 85px 20px;
+  background:
+    radial-gradient(circle at top, #482779 0%, #171027 35%, #090711 75%);
+}
+
+.hero h1 {
+  font-size: clamp(42px, 9vw, 75px);
+  font-weight: 900;
+}
+
+.hero h1 span {
+  color: #a783ff;
+}
+
+.hero p {
+  color: #c5bdd5;
+  margin: 20px auto;
+  max-width: 600px;
+  line-height: 2;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 25px;
+  margin: 8px;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#a783ff,#7044d5);
+  color: white;
+  text-decoration: none;
+  font-weight: 800;
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px #8855ff66;
+}
+
+section {
+  padding: 65px 20px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.title h2 {
+  font-size: 30px;
+  color: #b69aff;
+}
+
+.title p {
+  color: #aaa0bf;
+  margin-top: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: #171326;
+  border: 1px solid #39285b;
+  padding: 28px 20px;
+  border-radius: 18px;
+  text-align: center;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #a783ff;
+}
+
+.card .icon {
+  font-size: 35px;
+}
+
+.card h3 {
+  color: #b99dff;
+  margin: 12px 0;
+}
+
+.card p {
+  color: #b6adc9;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.server, .join {
+  max-width: 850px;
+  margin: auto;
+  padding: 30px;
+  background: #171326;
+  border: 1px solid #7044a9;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.ip {
+  direction: ltr;
+  background: #090711;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+  color: #b99dff;
+  overflow-wrap: anywhere;
+}
+
+/* STORE */
+
+.store {
+  background:
+    radial-gradient(circle at top, #211438, #090711 65%);
+}
+
+.rank-card {
+  position: relative;
+}
+
+.rank-price {
+  font-size: 27px;
+  font-weight: 900;
+  color: #c5aaff;
+  margin: 15px 0;
+}
+
+.permanent {
+  color: #9e8bbd;
+  font-size: 12px;
+}
+
+.order-box {
+  max-width: 550px;
+  margin: 35px auto 0;
+  padding: 28px;
+  background: #171326;
+  border: 1px solid #7044a9;
+  border-radius: 20px;
+}
+
+.order-box h3 {
+  color: #c4a8ff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: #c7bddb;
+  margin: 15px 0 7px;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  background: #090711;
+  border: 1px solid #49356c;
+  color: white;
+  font-family: inherit;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #a783ff;
+}
+
+select option {
+  background: #171326;
+}
+
+.payment {
+  background: #090711;
+  border: 1px solid #49356c;
+  border-radius: 12px;
+  padding: 17px;
+  margin-top: 20px;
+  text-align: center;
+  line-height: 2;
+}
+
+.payment strong {
+  color: #c3a4ff;
+  direction: ltr;
+  display: block;
+  font-size: 20px;
+}
+
+.result {
+  display: none;
+  background: #211638;
+  border: 1px solid #9c70ef;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.order-code {
+  direction: ltr;
+  font-size: 24px;
+  font-weight: 900;
+  color: #d2baff;
+  padding: 15px;
+  margin: 15px 0;
+  background: #090711;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+
+.notice {
+  font-size: 12px;
+  color: #b9aaca;
+  line-height: 2;
+  margin-top: 15px;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #8e829f;
+  border-top: 1px solid #38265c;
+  font-size: 13px;
+}
+
+@media(max-width:500px) {
+  header {
+    flex-direction: column;
+  }
+  nav a {
+    margin: 0 4px;
+  }
+  .order-box {
+    padding: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">✧ VELORA ✓</div>
+  <nav>
+    <a href="#about">من نحن</a>
+    <a href="#minecraft">ماينكرافت</a>
+    <a href="#store">المتجر</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>WELCOME TO<br><span>VELORA</span></h1>
+
+  <p>
+    أهلاً بك في مجتمع فيلورا!
+    مجتمع يجمع الألعاب والأنمي والأصدقاء
+    والفعاليات في مكان واحد.
+  </p>
+
+  <a class="btn"
+     href="https://discord.gg/pv89H7QBm5"
+     target="_blank">
+     ✨ انضم إلى Discord
+  </a>
+
+  <a class="btn" href="#store">
+     🛒 متجر الرتب
+  </a>
+</div>
+
+<section id="about">
+  <div class="title">
+    <h2>✧ ABOUT VELORA</h2>
+    <p>اكتشف عالم فيلورا</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">💬</div>
+      <h3>CHAT</h3>
+      <p>شات للتواصل والتعرف على أصدقاء جدد.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎮</div>
+      <h3>GAMES</h3>
+      <p>ألعاب وتحديات ومجتمع للاعبين.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">✨</div>
+      <h3>EVENTS</h3>
+      <p>فعاليات ومسابقات وأنشطة.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛠️</div>
+      <h3>SUPPORT</h3>
+      <p>فريق إدارة لمساعدتك.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="minecraft">
+  <div class="title">
+    <h2>⛏️ MINECRAFT SERVER</h2>
+    <p>انضم إلى عالم فيلورا</p>
+  </div>
+
+  <div class="server">
+    <h2>VELORA BOX</h2>
+    <p style="color:#aaa;margin-top:10px">
+      عنوان سيرفر ماينكرافت
+    </p>
+
+    <div class="ip" id="serverIP">
+      velorabox.play.jumphosting.cloud
+    </div>
+
+    <button class="btn" onclick="copyIP()">
+      📋 نسخ IP
+    </button>
+  </div>
+</section>
+
+<!-- STORE -->
+
+<section id="store" class="store">
+
+  <div class="title">
+    <h2>🌙 VELORA STORE</h2>
+    <p>اختر رتبتك وابدأ رحلتك في فيلورا</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card rank-card">
+      <div class="icon">👑</div>
+      <h3>KING</h3>
+      <div class="rank-price">200 ج.م</div>
+      <p>رتبة ملكية مميزة</p>
+      <p class="permanent">دائمة مدى الحياة</p>
+    </div>
+
+    <div class="card rank-card">
+      <div class="icon">💎</div>
+      <h3>VIP</h3>
+      <div class="rank-price">150 ج.م</div>
+      <p>رتبة بمميزات خاصة</p>
+      <p class="permanent">دائمة مدى الحياة</p>
+    </div>
+
+    <div class="card rank-card">
+      <div class="icon">⚔️</div>
+      <h3>HERO</h3>
+      <div class="rank-price">100 ج.م</div>
+      <p>رتبة الأبطال</p>
+      <p class="permanent">دائمة مدى الحياة</p>
+    </div>
+
+    <div class="card rank-card">
+      <div class="icon">⭐</div>
+      <h3>PREMIUM</h3>
+      <div class="rank-price">50 ج.م</div>
+      <p>رتبة مميزة</p>
+      <p class="permanent">دائمة مدى الحياة</p>
+    </div>
+
+  </div>
+
+  <div class="order-box">
+
+    <h3>🛒 إنشاء طلب شراء</h3>
+
+    <form id="orderForm">
+
+      <label>اختر الرتبة</label>
+      <select id="rank" required>
+        <option value="">-- اختر رتبتك --</option>
+        <option value="KING">KING - 200 جنيه</option>
+        <option value="VIP">VIP - 150 جنيه</option>
+        <option value="HERO">HERO - 100 جنيه</option>
+        <option value="PREMIUM">PREMIUM - 50 جنيه</option>
+      </select>
+
+      <label>اسم حساب Minecraft</label>
+      <input
+        type="text"
+        id="player"
+        placeholder="اكتب اسمك داخل اللعبة"
+        maxlength="16"
+        required
+      >
+
+      <div class="payment">
+        <p>💳 الدفع عبر Vodafone Cash</p>
+        <strong>01098037688</strong>
+        <p class="notice">
+          راجع رقم المحفظة مع ولي أمرك قبل نشر الموقع.
+          لا ترسل أي بيانات سرية أو رقم PIN.
+        </p>
+      </div>
+
+      <button type="submit" class="btn" style="width:100%">
+        ✨ إنشاء كود الطلب
+      </button>
+
+    </form>
+
+    <div class="result" id="result">
+
+      <h3>✅ تم إنشاء طلبك</h3>
+
+      <p>كود الطلب الخاص بك:</p>
+
+      <div class="order-code" id="orderCode"></div>
+
+      <p id="orderDetails"></p>
+
+      <button class="btn" onclick="copyOrder()">
+        📋 نسخ تفاصيل الطلب
+      </button>
+
+      <a
+        class="btn"
+        href="https://discord.gg/pv89H7QBm5"
+        target="_blank"
+        rel="noopener">
+        🎫 فتح Discord وإرسال الطلب
+      </a>
+
+      <p class="notice">
+        افتح تذكرة شراء داخل Discord وأرسل كود الطلب.
+        انتظر مراجعة الإدارة للتحويل قبل اعتماد الشراء.
+        إنشاء الكود لا يعني تأكيد الدفع.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+  <div class="join">
+    <h2 style="color:#b99dff">
+      ✨ JOIN VELORA
+    </h2>
+
+    <p style="color:#c5bdd5;margin:15px">
+      مكانك بيننا، انضم الآن إلى مجتمعنا!
+    </p>
+
+    <a class="btn"
+       href="https://discord.gg/pv89H7QBm5"
+       target="_blank">
+       🚀 دخول سيرفر الديسكورد
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 VELORA COMMUNITY
+  <br>
+  ALL RIGHTS RESERVED
+</footer>
+
+<script>
+
+const prices = {
+  KING: 200,
+  VIP: 150,
+  HERO: 100,
+  PREMIUM: 50
+};
+
+let currentOrder = "";
+
+function copyIP() {
+  const ip = "velorabox.play.jumphosting.cloud";
+
+  navigator.clipboard.writeText(ip)
+    .then(() => alert("تم نسخ عنوان السيرفر!"))
+    .catch(() => alert("انسخ العنوان: " + ip));
+}
+
+function generateCode() {
+
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  const random = new Uint8Array(8);
+  crypto.getRandomValues(random);
+
+  let code = "VEL-";
+
+  for (let i = 0; i < random.length; i++) {
+    code += chars[random[i] % chars.length];
+  }
+
+  return code;
+}
+
+document.getElementById("orderForm")
+.addEventListener("submit", function(e) {
+
+  e.preventDefault();
+
+  const rank = document.getElementById("rank").value;
+  const player = document.getElementById("player").value.trim();
+
+  if (!rank || !player) {
+    alert("يرجى إكمال البيانات");
+    return;
+  }
+
+  if (!/^[a-zA-Z0-9_]{1,16}$/.test(player)) {
+    alert("اسم Minecraft غير صحيح");
+    return;
+  }
+
+  const price = prices[rank];
+
+  currentOrder = generateCode();
+
+  document.getElementById("orderCode").textContent =
+    currentOrder;
+
+  document.getElementById("orderDetails").textContent =
+    "الرتبة: " + rank +
+    " | السعر: " + price +
+    " جنيه | اللاعب: " + player;
+
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("result").scrollIntoView({
+    behavior: "smooth"
+  });
+
+});
+
+function copyOrder() {
+
+  const details =
+    "VELORA STORE\n" +
+    "كود الطلب: " + currentOrder + "\n" +
+    document.getElementById("orderDetails").textContent;
+
+  navigator.clipboard.writeText(details)
+    .then(() => alert("تم نسخ تفاصيل الطلب!"))
+    .catch(() => alert(details));
+
+}
+
+</script>
+
+</body>
+  </html>
